@@ -9,7 +9,7 @@ Este é o repositório oficial do nosso aplicativo de delivery de comida B&B. Aq
 - Expo CLI instalado globalmente (npm install -g expo-cli)
 
 ### Passos para Execução
-1. Clone este repositório: git clone url_do_seu_repositorio.git
+1. Clone este repositório: git clone [url do repositório backend](https://github.com/pedromonteir01/B-B-back.git)
 2. Instale as dependências: npm install
 3. Inicie o servidor de desenvolvimento: expo start
 
@@ -37,26 +37,26 @@ react-native-expo-boilerplate/
 
 ### Tabelas:
 
-1. *Usuários (users):*
+1. Usuários (users):
    - name: Nome do usuário (varchar).
    - email: Email do usuário (varchar, chave primária).
    - cpf: CPF do usuário (char).
    - telephone: Telefone do usuário (char).
    - password: Senha do usuário (text).
    - address: ID do endereço do usuário (int).
-   - *Chave Estrangeira:*
+   - Chave Estrangeira:
      - address: Referencia o ID de um endereço na tabela address.
 
-2. *Restaurantes (restaurants):*
+2. Restaurantes (restaurants):
    - id: Identificador único do restaurante (serial).
    - name: Nome do restaurante (varchar).
    - type: Tipo de restaurante (varchar).
    - operation: Horário de operação do restaurante (char).
    - address: ID do endereço do restaurante (int).
-   - *Chave Estrangeira:*
+   - Chave Estrangeira:
      - address: Referencia o ID de um endereço na tabela address.
 
-3. *Endereço (address):*
+3. Endereço (address):
    - id: Identificador único do endereço (serial).
    - state: Estado do endereço (char).
    - city: Cidade do endereço (varchar).
@@ -66,32 +66,32 @@ react-native-expo-boilerplate/
    - complement: Complemento do endereço (text).
    - cep: CEP do endereço (char).
 
-4. *Pedidos (orders):*
+4. Pedidos (orders):
    - id: Identificador único do pedido (serial).
    - userEmail: Email do usuário que fez o pedido (varchar).
    - restaurantID: ID do restaurante do pedido (int).
    - dateandhour: Data e hora do pedido (char).
    - state: Estado do pedido (varchar).
-   - *Chaves Estrangeiras:*
+   - Chaves Estrangeiras:
      - userEmail: Referencia o email de um usuário na tabela users.
      - restaurantID: Referencia o ID de um restaurante na tabela restaurants.
 
-5. *Itens do Pedido (itensOrders):*
+5. Itens do Pedido (itensOrders):
    - id: Identificador único do item do pedido (serial).
    - orderid: ID do pedido (int).
    - productid: ID do produto (int).
    - quantity: Quantidade do produto no pedido (int).
-   - *Chaves Estrangeiras:*
+   - Chaves Estrangeiras:
      - orderid: Referencia o ID de um pedido na tabela orders.
      - productid: Referencia o ID de um produto na tabela products.
 
-6. *Produtos (products):*
+6. Produtos (products):
    - id: Identificador único do produto (serial).
    - name: Nome do produto (varchar).
    - description: Descrição do produto (text).
    - price: Preço do produto (decimal).
    - restaurantid: ID do restaurante que vende o produto (int).
-   - *Chave Estrangeira:*
+   - Chave Estrangeira:
      - restaurantid: Referencia o ID de um restaurante na tabela restaurants.
     
 ## Visão geral das rotas disponíveis
@@ -100,43 +100,43 @@ react-native-expo-boilerplate/
 
 ### 1. Home
 
-- *Rota:* /home
-- *Descrição:* Rota principal da aplicação, exibindo a página inicial com as opções disponíveis.
+- Rota: /home
+- Descrição: Rota principal da aplicação, exibindo a página inicial com as opções disponíveis.
 
 ### 2. Pedidos
 
-- *Rota:* /orders
-- *Descrição:* Rota para visualização dos pedidos realizados pelo usuário.
+- Rota: /orders
+- Descrição: Rota para visualização dos pedidos realizados pelo usuário.
 
 ### 3. Carrinho
 
-- *Rota:* /carrinho
-- *Descrição:* Rota para visualização e gerenciamento do carrinho de compras.
+- Rota: /carrinho
+- Descrição: Rota para visualização e gerenciamento do carrinho de compras.
 
 ### 4. Equipe B&B
 
-- *Rota:* /sobre-nos
-- *Descrição:* Rota para exibir informações sobre a equipe responsável pelo projeto.
+- Rota: /sobre-nos
+- Descrição: Rota para exibir informações sobre a equipe responsável pelo projeto.
 
 ### 5. Perfil/Login
 
-- *Rota:* /login
-- *Descrição:* Rota para login de usuários. Se o usuário já estiver autenticado, exibirá o perfil do usuário.
+- Rota: /login
+- Descrição: Rota para login de usuários. Se o usuário já estiver autenticado, exibirá o perfil do usuário.
 
 ### 6. Cadastro
 
-- *Rota:* /register
-- *Descrição:* Rota para registro de novos usuários.
+- Rota: /register
+- Descrição: Rota para registro de novos usuários.
 
 ### 7. Restaurantes
 
-- *Rota:* /restaurantes
-- *Descrição:* Rota para visualização de restaurantes disponíveis.
+- Rota: /restaurantes
+- Descrição: Rota para visualização de restaurantes disponíveis.
 
 ### 8. Detalhes do Pedido
 
-- *Rota:* /details-orders
-- *Descrição:* Rota para exibição detalhada de um pedido específico.
+- Rota: /details-orders
+- Descrição: Rota para exibição detalhada de um pedido específico.
 
 
 ## Licença

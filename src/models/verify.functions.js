@@ -38,17 +38,31 @@ const number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const specialCaracteres = ['!', '@', '#', '$', '%', '&', '*', '(', ')', '£', '¢', '¬', '§', '-', '_', '+', '=', '[', ']', '{', '}', '^', '~', ':', ';', '/'];
 
 const verifyPassword = (password) => {
-    let newPassword = password.split('');
-
-    if(newPassword.length < 9) {
+    if(password.length < 9) {
         return false;
-    } else if(!newPassword.includes(number)) {
-        return false;
-    } else if(!newPassword.includes(specialCaracteres)) {
-        return false;
-    } else {
-        return true;
     }
+    let containsNumber = false;
+    for (let i = 0; i < number.length; i++) {
+        if (password.includes(number[i])) {
+            containsNumber = true;
+            break;
+        }
+    }
+    if (!containsNumber) {
+        return false;
+    }
+    let containsSpecialCharacter = false;
+    for (let i = 0; i < specialCaracteres.length; i++) {
+        if (password.includes(specialCaracteres[i])) {
+            containsSpecialCharacter = true;
+            break;
+        }
+    }
+    if (!containsSpecialCharacter) {
+        return false;
+    }
+    return true;
 }
+
 
 module.exports = { verifyEmail, verifyCpf, verifyPassword };

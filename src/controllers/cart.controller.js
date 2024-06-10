@@ -65,28 +65,28 @@ const getOrderByState = async (req, res) => {
 const postOrder = async (req, res) => {
     try {
         const { userEmail, restaurantID, dateandhour, state, itens } = req.body;
+        console.log('Itens recebidos:', itens); // Log para verificar os itens
         const abstractDate = new Date(dateandhour);
         const newDate = `${abstractDate.getDate()}-${abstractDate.getMonth() + 1}-${abstractDate.getFullYear()} ${abstractDate.getHours()}:${abstractDate.getMinutes()}`;
 
-        console.log(itens);
-        console.log('Creating order...');
         const orderReq = await pool.query(
             'INSERT INTO orders (userEmail, restaurantID, dateandhour, state) VALUES ($1, $2, $3, $4) RETURNING id',
             [userEmail, restaurantID, newDate, state]
         );
         const orderId = orderReq.rows[0].id;
-        console.log('Order created with ID:', orderId);
+        console.log('Pedido criado com ID:', orderId);
 
         for (const item of itens) {
-            console.log('Inserting item:', item);
+            console.log('Inserindo item:', item);
             await pool.query(
                 'INSERT INTO itensorders (orderid, productid, quantity) VALUES ($1, $2, $3)',
                 [orderId, item.productid, item.quantity]
             );
+            console.log(`Item inserido: Pedido ID ${orderId}, Produto ID ${item.productid}, Quantidade ${item.quantity}`);
         }
-        return res.status(201).send({ message: 'posted order', order: orderId });
+        return res.status(201).send({ message: 'Pedido registrado', order: orderId });
     } catch (error) {
-        console.log('Could not POST HTTP', error);
+        console.log('Erro ao criar pedido', error);
         return res.status(500).send({ message: 'Erro interno' });
     }
 };

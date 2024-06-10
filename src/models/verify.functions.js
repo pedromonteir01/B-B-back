@@ -1,9 +1,5 @@
 const verifyEmail = (email) => {
-    let newEmail = email.split('');
-
-    for(let i = 0; i < newEmail.length; i++) {
-        return newEmail[i] == '@' ? true : false;
-    }
+    email.includes('@') ? true : false;
 }
 
 const verifyCpf = (cpf) => {

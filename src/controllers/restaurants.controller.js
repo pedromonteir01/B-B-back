@@ -24,21 +24,12 @@ const getRestaurants = async (req, res) => {
 const getRestaurantsByName = async (req, res) => {
     try {
         const { name } = req.params;
+        console.log(name);
 
         const restaurants = await pool.query(`
-SELECT 
-    restaurants.name AS restaurant,
-    restaurants.id AS id,
-    restaurants.type AS type,
-    products.name AS product,
-    products.description AS product_desc,
-    products.price AS price_product
-FROM
-    restaurants
-JOIN 
-    products ON restaurants.id = products.restaurantid
-WHERE 
-    restaurants.id = $1;
+SELECT *
+FROM restaurants
+WHERE name LIKE $1;
 
         `, [`${name}%`]);
         return restaurants.rowCount > 0 ?

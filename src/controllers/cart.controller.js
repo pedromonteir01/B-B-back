@@ -65,7 +65,6 @@ const getOrderByState = async (req, res) => {
 const postOrder = async (req, res) => {
     try {
         const { userEmail, restaurantID, dateandhour, state, itens } = req.body;
-        console.log('Itens recebidos:', itens); // Log para verificar os itens
         const abstractDate = new Date(dateandhour);
         const newDate = `${abstractDate.getDate()}-${abstractDate.getMonth() + 1}-${abstractDate.getFullYear()} ${abstractDate.getHours()}:${abstractDate.getMinutes()}`;
 
@@ -96,7 +95,7 @@ const updateOrder = async (req, res) => {
         const { id } = req.params;
         const { userEmail, restaurantID, dateandhour, state, itens } = req.body;
         const abstractDate = new Date(dateandhour);
-        const newDate = `${String(abstractDate.getDate()).padStart(2, '0')}-${String(abstractDate.getMonth() + 1).padStart(2, '0')}-${abstractDate.getFullYear()} ${String(abstractDate.getHours()).padStart(2, '0')}:${String(abstractDate.getMinutes()).padStart(2, '0')}`;
+        const newDate = `${String(abstractDate.getDate()).padStart(2, '0')}-${String(abstractDate.getMonth() + 1).padStart(2, '0')}-${abstractDate.getFullYear()} ${String(abstractDate.getHours())}:${String(abstractDate.getMinutes())}`;
 
         console.log('Updating order ID:', id);
         const order = (await pool.query('SELECT * FROM orders WHERE id=$1', [id])).rows[0];

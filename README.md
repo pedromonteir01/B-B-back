@@ -138,7 +138,7 @@ react-native-expo-boilerplate/
 - Rota: /details-orders
 - Descrição: Rota para exibição detalhada de um pedido específico.
 
-### 8. MER/DER 
+### MER/DER 
 ![Texto Alternativo](/images/MERDER.PNG)
 
 ## Licença
